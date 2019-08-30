@@ -44,4 +44,10 @@ return [
         ],
     ],
 
+    'facebook' => [
+        'client_id' => '436385956963290',
+        'client_secret' => 'cb2b6e2a0106c445e8d9ab1a1a152c9c',
+        'redirect' => 'http://localhost/laravel_projects/cv_maker/login/facebook/callback',
+    ],
+
 ];

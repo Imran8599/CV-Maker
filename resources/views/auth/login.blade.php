@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row mb-0">
+                <div class="form-group row mb-5">
                     <div class="col-md-8 offset-md-2">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Login') }}
@@ -62,6 +62,14 @@
                         @endif
                     </div>
                 </div>
+
+                <div class="form-group row mt-5">
+                    <div class="col-md-12 text-center">
+                        <a href="{{url('login/facebook')}}" class="btn btn-primary">Facebook Login</a>
+                    </div>
+                </div>
+
+                
             </form>
         </div>
     </div>
