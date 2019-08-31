@@ -7,8 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Hello, world!</title>
+    <title>CV Maker</title>
   </head>
   <body>
     <!-- Header -->
@@ -20,23 +22,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{{ url('/') }}">Home</a>
+                <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home pr-1" style="font-size:18px;"></i>Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LogOut</a>
+              <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out pr-1" style="font-size:18px;"></i>LogOut</a>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
               </form>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('login') }}">LogIn</a>
+              <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in pr-1" style="font-size:18px;"></i>LogIn</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('register') }}">SignUp</a>
+              <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-sign-in pr-1" style="font-size:18px;"></i>SignUp</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Help</a>
@@ -53,10 +55,10 @@
         <div class="row">
             <div class="col-3">
               <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" href="{{ url('/') }}">Home</a>
-                <a class="list-group-item list-group-item-action" href="{{ url('/home') }}">View Resume</a>
-                <a class="list-group-item list-group-item-action" href="">Edit Resume</a>
-                <a class="list-group-item list-group-item-action" href="#">Download PDF</a>
-                <a class="list-group-item list-group-item-action" href="#list-settings">Print</a>
+                <a class="list-group-item list-group-item-action active" href="{{ url('/') }}"><i class="fa fa-home pr-1" style="font-size:18px;"></i>Home</a>
+                <a class="list-group-item list-group-item-action" href="{{ url('/home') }}"><i class="fa fa-eye pr-1" style="font-size:18px;"></i>View Resume</a>
+                <a class="list-group-item list-group-item-action" href="{{ url('edit')}}"><i class="fa fa-edit pr-1" style="font-size:18px;"></i>Edit Resume</a>
+                <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-download pr-1" style="font-size:18px;"></i>Download PDF</a>
+                <a class="list-group-item list-group-item-action" href="#list-settings"><i class="fa fa-print pr-1" style="font-size:18px;"></i>Print</a>
               </div>
             </div>
