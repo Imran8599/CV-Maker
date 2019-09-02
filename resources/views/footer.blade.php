@@ -19,7 +19,7 @@
     function Clock(){
         var date, hour, miunte, second, ampm;
         date   = new Date();
-        hour   = (date.getHours() >= 12) ? date.getHours()-12 : date.getHours();
+        hour   = (date.getHours() >= 13) ? date.getHours()-12 : date.getHours();
         miunte = date.getMinutes();
         second = date.getSeconds();
         ampm   = (date.getHours() >= 12) ? " PM" : " AM";
