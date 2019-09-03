@@ -9,7 +9,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!--Angular Js CDN link-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <style>
+      input.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched{
+          border: 1px solid #DA3637;
+      }
+      input.ng-valid.ng-touched,textarea.ng-valid.ng-touched{
+          border: 1px solid #509D12;
+      }
+    </style>
     <title>CV Maker</title>
   </head>
   <body>

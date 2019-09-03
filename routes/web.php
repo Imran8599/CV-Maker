@@ -22,3 +22,8 @@ Route::get('edit', 'HomeController@edit')->name('edit');
 
 Route::get('login/facebook', 'FacebookController@redirectToProvider');
 Route::get('login/facebook/callback', 'FacebookController@handleProviderCallback');
+
+Route::post('personal-details','PersonalDetailsController@index');
+Route::post('career-obj','PersonalDetailsController@index');
+Route::post('personal-details','PersonalDetailsController@index');
+Route::post('personal-details','PersonalDetailsController@index');
