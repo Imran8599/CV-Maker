@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\PersonalDetails;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -27,7 +29,8 @@ class HomeController extends Controller
     }
     public function edit()
     {
-        return view('edit');
+        $user = PersonalDetails::where('user_id', Auth::user()->id)->first();
+        return view('edit',compact('user'));
     }
 
 

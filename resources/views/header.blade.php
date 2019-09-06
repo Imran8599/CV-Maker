@@ -4,13 +4,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Angular Js CDN link-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script> --}}
     <style>
       input.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched{
           border: 1px solid #DA3637;
@@ -20,6 +19,7 @@
       }
     </style>
     <title>CV Maker</title>
+    <link rel="shortcut icon" type="image/png" href="{{asset('public/img/cv.jpg')}}"/>
   </head>
   <body>
     <!-- Header -->

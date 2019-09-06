@@ -2,6 +2,21 @@
 
 @section('mainSection')
   <div class="col-9" ng-app="">
+    @if(Session::has('success'))
+      <div class="alert alert-success pb-0 alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">
+          <span>&times;</span>
+        </button>
+        <p>{{Session::get('success')}}</p>
+      </div>
+    @elseif(Session::has('danger'))
+      <div class="alert alert-danger pb-0 alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">
+          <span>&times;</span>
+        </button>
+        <p>{{Session::get('danger')}}</p>
+      </div>
+    @endif
     <div class="card">
         <div class="card-header bg-primary text-light"><i class="fa fa-pencil pr-2" style="font-size:20px;"></i>Edit Resume</div>
         <div class="card-body">
@@ -17,72 +32,75 @@
               </div>
               <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                <form method="POST" action="{{url('personal-details')}}" name="pd" novalidate>
-                    @csrf
+
+                <form action="{{url('personal-details')}}"  method="POST" name="pd" novalidate>
+                  @csrf
+                  <input type="hidden" name="id" value="{{$user->id}}">
+                  <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="name">Name</label>
-                      <input id="name" class="form-control" type="text" name="name" placeholder="Name" ng-model="name" ng-required="true">
+                      <input id="name" class="form-control" type="text" name="name" value="{{$user->name}}" ng-model="name" ng-required="true">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="f_name">Father's Name</label>
-                        <input type="text" class="form-control" id="f_name" placeholder="Father's Name" ng-model="f_name" ng-required="true">
+                        <input type="text" class="form-control" id="f_name" name="f_name" value="{{$user->f_name}}" ng-model="f_name" ng-required="true">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="m_name">Mother's Name</label>
-                        <input type="text" class="form-control" id="m_name" placeholder="Mother's Name" ng-model="m_name" ng-required="true">
+                        <input type="text" class="form-control" id="m_name" name="m_name" value="{{$user->m_name}}" ng-model="m_name" ng-required="true">
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" ng-model="email" ng-required="true">
+                        <input type="email" class="form-control" id="email" name="email"  value="{{$user->email}}" ng-model="email" ng-required="true">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="phone">Phone</label>
-                        <input type="number" class="form-control" id="phone" placeholder="Phone" ng-model="phone" ng-required="true">
+                        <input type="number" class="form-control" id="phone" name="phone"  value="{{$user->phone}}" ng-model="phone" ng-required="true">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="p_address">Permanent Address</label>
-                      <input type="text" class="form-control" id="p_address" placeholder="Permanent Address" ng-model="p_address" ng-required="true">
+                      <input type="text" class="form-control" id="p_address" name="p_address"  value="{{$user->p_address}}" ng-model="p_address" ng-required="true">
                     </div>
                     <div class="form-group">
                       <label for="c_address">Current Address</label>
-                      <input type="text" class="form-control" id="c_address" placeholder="Current Address" ng-model="c_address" ng-required="true">
+                      <input type="text" class="form-control" id="c_address" name="c_address"  value="{{$user->c_address}}" ng-model="c_address" ng-required="true">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-4">
                         <label for="inputState">Religion</label>
-                        <select id="inputState" class="form-control" ng-name="religion" ng-model="religion" ng-required="true">
-                          <option value="Islam">Islam</option>
-                          <option value="Hindu">Hindu</option>
-                          <option value="Christian">Christian</option>
+                        <select id="inputState" class="form-control" name="religion" ng-name="religion" ng-model="religion" ng-required="true">
+                          <option value="Islam" {{$user->religion == "Islam" ? 'selected':''}}>Islam</option>
+                          <option value="Hindu" {{$user->religion == "Hindu" ? 'selected':''}}>Hindu</option>
+                          <option value="Christian" {{$user->religion == "Christian" ? 'selected':''}}>Christian</option>
                         </select>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputState">Gender</label>
-                        <select id="inputState" class="form-control" ng-name="gender" ng-model="gender" ng-required="true">
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
+                        <select id="inputState" class="form-control" name="gender" ng-name="gender" ng-model="gender" ng-required="true">
+                          <option value="Male" {{$user->gender == "Male" ? 'selected':''}}>Male</option>
+                          <option value="Female" {{$user->gender == "Female" ? 'selected':''}}>Female</option>
                         </select>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputState">Marital Status</label>
-                        <select id="inputState" class="form-control" ng-name="marital_status" ng-model="marital_status" ng-required="true">
-                          <option value="Married">Married</option>
-                          <option value="Unmarried">Unmarried</option>
+                        <select id="inputState" class="form-control" name="marital_status" ng-name="marital_status" ng-model="marital_status" ng-required="true">
+                          <option value="Married" {{$user->marital_status == "Married" ? 'selected':''}}>Married</option>
+                          <option value="Unmarried" {{$user->marital_status == "Unmarried" ? 'selected':''}}>Unmarried</option>
                         </select>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="nationality">Nationality</label>
-                        <input type="text" class="form-control" id="nationality" placeholder="Nationality" ng-model="nationality" ng-required="true">
+                        <input type="text" class="form-control" id="nationality" name="nationality"  value="{{$user->nationality}}" ng-model="nationality" ng-required="true">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="date_of">Date of Birth</label>
-                        <input type="text" class="form-control" id="date_of" placeholder="Date of Birth" ng-model="date_of" ng-required="true">
+                        <input type="text" class="form-control" id="date_of" name="date_of"  value="{{$user->date_of}}" ng-model="date_of" ng-required="true">
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary" ng-disabled="pd.$invalid">Save</button>
@@ -90,8 +108,6 @@
                 </div>
               </div>
             </div>
-
-
 
             <!-- Other Information -->          
             <div class="card">
@@ -117,7 +133,7 @@
                     @csrf
                     <div class="form-group">
                       <label for="career_summary">Career Summary</label>
-                      <textarea id="career_summary" class="form-control" name="" rows="3" placeholder="Career Summary" ng-model="career_summary" ng-required="true"></textarea>
+                      <textarea id="career_summary" class="form-control" name="career_sum" rows="3" placeholder="Career Summary" ng-model="career_summary" ng-required="true"></textarea>
                     </div>
                     <button class="btn btn-primary mb-5" type="submit" ng-disabled="cs.$invalid">Save</button>
                   </form>
@@ -127,7 +143,7 @@
                     @csrf
                     <div class="form-group">
                       <label for="special_qualification">Special Qualification</label>
-                      <textarea id="special_qualification" class="form-control" name="" rows="3" placeholder="Special Qualification" ng-model="special_qualification" ng-required="true"></textarea>
+                      <textarea id="special_qualification" class="form-control" name="special_qua" rows="3" placeholder="Special Qualification" ng-model="special_qualification" ng-required="true"></textarea>
                     </div>
                     <button class="btn btn-primary" type="submit" ng-disabled="sq.$invalid">Save</button>
                   </form>
@@ -258,8 +274,7 @@
                     </div>
                     <button class="btn btn-primary mb-5" type="submit" ng-disabled="fs.$invalid">Save</button>
                   </form>
-                  <form method="POST" action="{{url('description')}}" name="desc" novalidate>
-                    @csrf
+                  <form method="POST" action="" id="description" name="desc" novalidate>
                     <div class="form-group">
                       <label for="description">Description</label>
                       <textarea id="description" class="form-control" name="description" ng-model="description" ng-required="true" rows="3" placeholder="Description"></textarea>
@@ -340,25 +355,25 @@
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" ng-model="email" ng-required="true">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="email" ng-required="true">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="phone">Phone</label>
-                        <input type="number" class="form-control" id="phone" placeholder="Phone" ng-model="phone" ng-required="true">
+                        <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone" ng-model="phone" ng-required="true">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="address">Address</label>
-                      <input type="text" class="form-control" id="address" placeholder="Address" ng-model="address" ng-required="true">
+                      <input type="text" class="form-control" id="address" name="address" placeholder="Address" ng-model="address" ng-required="true">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="organization">Organization</label>
-                        <input type="text" class="form-control" id="organization" placeholder="Organization" ng-model="organization" ng-required="true">
+                        <input type="text" class="form-control" id="organization" name="organization" placeholder="Organization" ng-model="organization" ng-required="true">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="designation">Designation</label>
-                        <input type="text" class="form-control" id="designation" placeholder="Designation" ng-model="designation" ng-required="true">
+                        <input type="text" class="form-control" id="designation" name="designation" placeholder="Designation" ng-model="designation" ng-required="true">
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary" ng-disabled="reference.$invalid">Save</button>
