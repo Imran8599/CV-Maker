@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PersonalDetails;
+use App\CareerObj;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -30,7 +31,8 @@ class HomeController extends Controller
     public function edit()
     {
         $user = PersonalDetails::where('user_id', Auth::user()->id)->first();
-        return view('edit',compact('user'));
+        $user_obj = CareerObj::where('user_id', Auth::user()->id)->first();
+        return view('edit',compact('user','user_obj'));
     }
 
 

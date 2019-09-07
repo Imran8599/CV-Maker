@@ -24,3 +24,12 @@ Route::get('login/facebook', 'FacebookController@redirectToProvider');
 Route::get('login/facebook/callback', 'FacebookController@handleProviderCallback');
 
 Route::post('personal-details','PersonalDetailsController@index');
+Route::post('career-obj','CareerObjectiveController@index');
+Route::post('career-sum','CareerSummaryController@index');
+Route::post('special-qua','SpecialQualificationController@index');
+Route::post('academic-qua','AcademicQuaController@index');
+Route::post('training-sum','TrainingSumController@index');
+Route::post('specialization','SpecializationController@index');
+Route::post('description','DescriptionController@index');
+Route::post('language','LanguageProController@index');
+Route::post('reference','ReferenceController@index');

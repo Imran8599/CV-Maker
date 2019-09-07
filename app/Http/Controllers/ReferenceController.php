@@ -4,29 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Reference;
 
 class ReferenceController extends Controller
 {
     function index(Request $request){
 
-        $user = PersonalDetails::where('user_id', Auth::user()->id)->first();
+        $user = Reference::where('user_id', Auth::user()->id)->first();
 
         if($user != ""){
-            $data = PersonalDetails::find($request->id);
+            $data = Reference::find($request->id);
             $data->id = $request->id;
             $data->user_id = $request->user_id;
             $data->name = $request->name;
-            $data->f_name = $request->f_name;
-            $data->m_name = $request->m_name;
             $data->email = $request->email;
             $data->phone = $request->phone;
-            $data->p_address = $request->p_address;
-            $data->c_address = $request->c_address;
-            $data->religion = $request->religion;
-            $data->gender = $request->gender;
-            $data->marital_status = $request->marital_status;
-            $data->nationality = $request->nationality;
-            $data->date_of = $request->date_of;
+            $data->address = $request->address;
+            $data->organization = $request->organization;
+            $data->designation = $request->designation;
             $result = $data->save();
             if($result){
                 return redirect()->back()->with('success','Save successfuly.');
@@ -34,20 +29,14 @@ class ReferenceController extends Controller
                 return redirect()->back()->with('danger','Something wrong!');
             }
         }else{
-            $data = new PersonalDetails();
+            $data = new Reference();
             $data->user_id = $request->user_id;
             $data->name = $request->name;
-            $data->f_name = $request->f_name;
-            $data->m_name = $request->m_name;
             $data->email = $request->email;
             $data->phone = $request->phone;
-            $data->p_address = $request->p_address;
-            $data->c_address = $request->c_address;
-            $data->religion = $request->religion;
-            $data->gender = $request->gender;
-            $data->marital_status = $request->marital_status;
-            $data->nationality = $request->nationality;
-            $data->date_of = $request->date_of;
+            $data->address = $request->address;
+            $data->organization = $request->organization;
+            $data->designation = $request->designation;
             $result = $data->save();
             if($result){
                 return redirect()->back()->with('success','Save successfuly.');

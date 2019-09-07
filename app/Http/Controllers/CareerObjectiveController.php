@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\CareerObj;
 
 class CareerObjectiveController extends Controller
 {
     function index(Request $request){
 
-        $user = PersonalDetails::where('user_id', Auth::user()->id)->first();
+        $user = CareerObj::where('user_id', Auth::user()->id)->first();
 
         if($user != ""){
-            $data = PersonalDetails::find($request->id);
+            $data = CareerObj::find($request->id);
             $data->id = $request->id;
             $data->user_id = $request->user_id;
-            $data->name = $request->name;
             $data->career_obj = $request->career_obj;
             $result = $data->save();
             if($result){
@@ -24,9 +24,8 @@ class CareerObjectiveController extends Controller
                 return redirect()->back()->with('danger','Something wrong!');
             }
         }else{
-            $data = new PersonalDetails();
+            $data = new CareerObj();
             $data->user_id = $request->user_id;
-            $data->name = $request->name;
             $data->career_obj = $request->career_obj;
             $result = $data->save();
             if($result){

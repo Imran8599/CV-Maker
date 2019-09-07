@@ -35,72 +35,75 @@
 
                 <form action="{{url('personal-details')}}"  method="POST" name="pd" novalidate>
                   @csrf
-                  <input type="hidden" name="id" value="{{$user->id}}">
+                  <input type="hidden" name="id" value="">
                   <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="name">Name</label>
-                      <input id="name" class="form-control" type="text" name="name" value="{{$user->name}}" ng-model="name" ng-required="true">
+                      <input id="name" class="form-control" type="text" name="name" value="" ng-model="name" ng-required="true">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="f_name">Father's Name</label>
-                        <input type="text" class="form-control" id="f_name" name="f_name" value="{{$user->f_name}}" ng-model="f_name" ng-required="true">
+                        <input type="text" class="form-control" id="f_name" name="f_name" value="" ng-model="f_name" ng-required="true">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="m_name">Mother's Name</label>
-                        <input type="text" class="form-control" id="m_name" name="m_name" value="{{$user->m_name}}" ng-model="m_name" ng-required="true">
+                        <input type="text" class="form-control" id="m_name" name="m_name" value="" ng-model="m_name" ng-required="true">
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email"  value="{{$user->email}}" ng-model="email" ng-required="true">
+                        <input type="email" class="form-control" id="email" name="email"  value="" ng-model="email" ng-required="true">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="phone">Phone</label>
-                        <input type="number" class="form-control" id="phone" name="phone"  value="{{$user->phone}}" ng-model="phone" ng-required="true">
+                        <input type="number" class="form-control" id="phone" name="phone"  value="" ng-model="phone" ng-required="true">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="p_address">Permanent Address</label>
-                      <input type="text" class="form-control" id="p_address" name="p_address"  value="{{$user->p_address}}" ng-model="p_address" ng-required="true">
+                      <input type="text" class="form-control" id="p_address" name="p_address"  value="" ng-model="p_address" ng-required="true">
                     </div>
                     <div class="form-group">
                       <label for="c_address">Current Address</label>
-                      <input type="text" class="form-control" id="c_address" name="c_address"  value="{{$user->c_address}}" ng-model="c_address" ng-required="true">
+                      <input type="text" class="form-control" id="c_address" name="c_address"  value="" ng-model="c_address" ng-required="true">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-4">
                         <label for="inputState">Religion</label>
                         <select id="inputState" class="form-control" name="religion" ng-name="religion" ng-model="religion" ng-required="true">
-                          <option value="Islam" {{$user->religion == "Islam" ? 'selected':''}}>Islam</option>
-                          <option value="Hindu" {{$user->religion == "Hindu" ? 'selected':''}}>Hindu</option>
-                          <option value="Christian" {{$user->religion == "Christian" ? 'selected':''}}>Christian</option>
+                          <option value="">--Select--</option>
+                          <option value="Islam" >Islam</option>
+                          <option value="Hindu" >Hindu</option>
+                          <option value="Christian" >Christian</option>
                         </select>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputState">Gender</label>
                         <select id="inputState" class="form-control" name="gender" ng-name="gender" ng-model="gender" ng-required="true">
-                          <option value="Male" {{$user->gender == "Male" ? 'selected':''}}>Male</option>
-                          <option value="Female" {{$user->gender == "Female" ? 'selected':''}}>Female</option>
+                          <option value="">--Select--</option>
+                          <option value="Male" >Male</option>
+                          <option value="Female" >Female</option>
                         </select>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputState">Marital Status</label>
                         <select id="inputState" class="form-control" name="marital_status" ng-name="marital_status" ng-model="marital_status" ng-required="true">
-                          <option value="Married" {{$user->marital_status == "Married" ? 'selected':''}}>Married</option>
-                          <option value="Unmarried" {{$user->marital_status == "Unmarried" ? 'selected':''}}>Unmarried</option>
+                          <option value="">--Select--</option>
+                          <option value="Married" >Married</option>
+                          <option value="Unmarried" >Unmarried</option>
                         </select>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="nationality">Nationality</label>
-                        <input type="text" class="form-control" id="nationality" name="nationality"  value="{{$user->nationality}}" ng-model="nationality" ng-required="true">
+                        <input type="text" class="form-control" id="nationality" name="nationality"  value="" ng-model="nationality" ng-required="true">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="date_of">Date of Birth</label>
-                        <input type="text" class="form-control" id="date_of" name="date_of"  value="{{$user->date_of}}" ng-model="date_of" ng-required="true">
+                        <input type="text" class="form-control" id="date_of" name="date_of"  value="" ng-model="date_of" ng-required="true">
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary" ng-disabled="pd.$invalid">Save</button>
@@ -122,9 +125,11 @@
                 <div class="card-body">
                   <form method="POST" action="{{url('career-obj')}}" name="co" novalidate>
                     @csrf
+                    <input type="hidden" name="id" value="">
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="career_objective">Career Objective</label>
-                      <textarea id="career_objective" class="form-control" name="career_obj" rows="3" placeholder="Career Objective" ng-model="career_obj" ng-required="true"></textarea>
+                      <textarea id="career_objective" class="form-control" name="career_obj" rows="3" ng-model="career_obj" ng-required="true"></textarea>
                     </div>
                     <button class="btn btn-primary mb-5" type="submit" ng-disabled="co.$invalid">Save</button>
                   </form>
@@ -274,7 +279,8 @@
                     </div>
                     <button class="btn btn-primary mb-5" type="submit" ng-disabled="fs.$invalid">Save</button>
                   </form>
-                  <form method="POST" action="" id="description" name="desc" novalidate>
+                  <form method="POST" action="{{url('description')}}" name="desc" novalidate>
+                    @csrf
                     <div class="form-group">
                       <label for="description">Description</label>
                       <textarea id="description" class="form-control" name="description" ng-model="description" ng-required="true" rows="3" placeholder="Description"></textarea>
@@ -299,6 +305,7 @@
               <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
                 <div class="card-body">
                   <form method="POST" action="{{url('language')}}" name="language_pro" novalidate>
+                    @csrf
                     <div class="form-group">
                       <label for="language">Language</label>
                       <input id="language" class="form-control" type="text" name="language" ng-model="language" ng-required="true">
@@ -306,6 +313,7 @@
                     <div class="form-group">
                       <label for="reading">Reading</label>
                       <select id="inputState" class="form-control" name="reading" ng-model="reading" ng-required="true">
+                        <option value="">--Select--</option>
                           <option value="Low">Low</option>
                           <option value="Medium">Medium</option>
                           <option value="High">High</option>
@@ -314,6 +322,7 @@
                     <div class="form-group">
                       <label for="writing">Writing</label>
                       <select id="inputState" class="form-control" name="writing" ng-model="writing" ng-required="true">
+                        <option value="">--Select--</option>
                           <option value="Low">Low</option>
                           <option value="Medium">Medium</option>
                           <option value="High">High</option>
@@ -322,6 +331,7 @@
                     <div class="form-group">
                       <label for="speaking">Speaking</label>
                       <select id="inputState" class="form-control" name="speaking" ng-model="speaking" ng-required="true">
+                          <option value="">--Select--</option>
                           <option value="Low">Low</option>
                           <option value="Medium">Medium</option>
                           <option value="High">High</option>
@@ -348,6 +358,7 @@
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
                   <form method="POST" action="{{url('reference')}}" name="reference" novalidate>
+                    @csrf
                     <div class="form-group">
                       <label for="name">Name</label>
                       <input id="name" class="form-control" type="text" name="name" placeholder="Name" ng-model="name" ng-required="true">
