@@ -33,77 +33,77 @@
               <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
 
-                <form action="{{url('personal-details')}}"  method="POST" name="pd" novalidate>
+                <form action="{{url('personal-details')}}"  method="POST">
                   @csrf
-                  <input type="hidden" name="id" value="">
+                  <input type="hidden" name="id" value="{{$per_det != '' ? $per_det->id : ''}}">
                   <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="name">Name</label>
-                      <input id="name" class="form-control" type="text" name="name" value="" ng-model="name" ng-required="true">
+                      <input id="name" class="form-control" type="text" name="name" value="{{$per_det != '' ? $per_det->name : ''}}">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="f_name">Father's Name</label>
-                        <input type="text" class="form-control" id="f_name" name="f_name" value="" ng-model="f_name" ng-required="true">
+                        <input type="text" class="form-control" id="f_name" name="f_name" value="{{$per_det != '' ? $per_det->f_name : ''}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="m_name">Mother's Name</label>
-                        <input type="text" class="form-control" id="m_name" name="m_name" value="" ng-model="m_name" ng-required="true">
+                        <input type="text" class="form-control" id="m_name" name="m_name" value="{{$per_det != '' ? $per_det->m_name : ''}}">
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email"  value="" ng-model="email" ng-required="true">
+                        <input type="email" class="form-control" id="email" name="email" value="{{$per_det != '' ? $per_det->email : ''}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="phone">Phone</label>
-                        <input type="number" class="form-control" id="phone" name="phone"  value="" ng-model="phone" ng-required="true">
+                        <input type="number" class="form-control" id="phone" name="phone" value="{{$per_det != '' ? $per_det->phone : ''}}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="p_address">Permanent Address</label>
-                      <input type="text" class="form-control" id="p_address" name="p_address"  value="" ng-model="p_address" ng-required="true">
+                      <input type="text" class="form-control" id="p_address" name="p_address" value="{{$per_det != '' ? $per_det->p_address : ''}}">
                     </div>
                     <div class="form-group">
                       <label for="c_address">Current Address</label>
-                      <input type="text" class="form-control" id="c_address" name="c_address"  value="" ng-model="c_address" ng-required="true">
+                      <input type="text" class="form-control" id="c_address" name="c_address" value="{{$per_det != '' ? $per_det->c_address : ''}}">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-4">
                         <label for="inputState">Religion</label>
-                        <select id="inputState" class="form-control" name="religion" ng-name="religion" ng-model="religion" ng-required="true">
+                        <select id="inputState" class="form-control" name="religion">
                           <option value="">--Select--</option>
-                          <option value="Islam" >Islam</option>
-                          <option value="Hindu" >Hindu</option>
-                          <option value="Christian" >Christian</option>
+                          <option value="Islam" {{$per_det != '' ? ($per_det->religion == 'Islam' ? 'selected' : '') : ''}}>Islam</option>
+                          <option value="Hindu" {{$per_det != '' ? ($per_det->religion == 'Hindu' ? 'selected' : '') : ''}}>Hindu</option>
+                          <option value="Christian" {{$per_det != '' ? ($per_det->religion == 'Christian' ? 'selected' : '') : ''}}>Christian</option>
                         </select>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputState">Gender</label>
-                        <select id="inputState" class="form-control" name="gender" ng-name="gender" ng-model="gender" ng-required="true">
+                        <select id="inputState" class="form-control" name="gender">
                           <option value="">--Select--</option>
-                          <option value="Male" >Male</option>
-                          <option value="Female" >Female</option>
+                          <option value="Male" {{$per_det != '' ? ($per_det->gender == 'Male' ? 'selected' : '') : ''}}>Male</option>
+                          <option value="Female" {{$per_det != '' ? ($per_det->gender == 'Female' ? 'selected' : '') : ''}}>Female</option>
                         </select>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputState">Marital Status</label>
-                        <select id="inputState" class="form-control" name="marital_status" ng-name="marital_status" ng-model="marital_status" ng-required="true">
+                        <select id="inputState" class="form-control" name="marital_status">
                           <option value="">--Select--</option>
-                          <option value="Married" >Married</option>
-                          <option value="Unmarried" >Unmarried</option>
+                          <option value="Married" {{$per_det != '' ? ($per_det->marital_status == 'Married' ? 'selected' : '') : ''}}>Married</option>
+                          <option value="Unmarried" {{$per_det != '' ? ($per_det->marital_status == 'Unmarried' ? 'selected' : '') : ''}}>Unmarried</option>
                         </select>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="nationality">Nationality</label>
-                        <input type="text" class="form-control" id="nationality" name="nationality"  value="" ng-model="nationality" ng-required="true">
+                        <input type="text" class="form-control" id="nationality" name="nationality" value="{{$per_det != '' ? $per_det->nationality : ''}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="date_of">Date of Birth</label>
-                        <input type="text" class="form-control" id="date_of" name="date_of"  value="" ng-model="date_of" ng-required="true">
+                        <input type="text" class="form-control" id="date_of" name="date_of" value="{{$per_det != '' ? $per_det->date_of : ''}}">
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary" ng-disabled="pd.$invalid">Save</button>
@@ -123,34 +123,39 @@
               </div>
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                 <div class="card-body">
+                  <!--Career Objective-->
                   <form method="POST" action="{{url('career-obj')}}" name="co" novalidate>
                     @csrf
-                    <input type="hidden" name="id" value="">
+                    <input type="hidden" name="id" value="{{$car_obj != '' ? $car_obj->id : ''}}">
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="career_objective">Career Objective</label>
-                      <textarea id="career_objective" class="form-control" name="career_obj" rows="3" ng-model="career_obj" ng-required="true"></textarea>
+                      <textarea id="career_objective" class="form-control" name="career_obj" rows="3">{{$car_obj != '' ? $car_obj->career_obj : ''}}</textarea>
                     </div>
-                    <button class="btn btn-primary mb-5" type="submit" ng-disabled="co.$invalid">Save</button>
+                    <button class="btn btn-primary mb-5" type="submit">Save</button>
                   </form>
-                  
+                  <!--Career Sum-->
                   <form method="POST" action="{{url('career-sum')}}" name="cs" novalidate>
                     @csrf
+                    <input type="hidden" name="id" value="{{$car_sum != '' ? $car_sum->id : ''}}">
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="career_summary">Career Summary</label>
-                      <textarea id="career_summary" class="form-control" name="career_sum" rows="3" placeholder="Career Summary" ng-model="career_summary" ng-required="true"></textarea>
+                      <textarea id="career_summary" class="form-control" name="career_sum" rows="3" placeholder="Career Summary">{{$car_sum != '' ? $car_sum->career_sum : ''}}</textarea>
                     </div>
-                    <button class="btn btn-primary mb-5" type="submit" ng-disabled="cs.$invalid">Save</button>
+                    <button class="btn btn-primary mb-5" type="submit">Save</button>
                   </form>
-
+                  <!--Special Qualification-->
                   </form>
                   <form method="POST" action="{{url('special-qua')}}" name="sq" novalidate>
                     @csrf
+                    <input type="hidden" name="id" value="{{$spe_qul != '' ? $spe_qul->id : ''}}">
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="special_qualification">Special Qualification</label>
-                      <textarea id="special_qualification" class="form-control" name="special_qua" rows="3" placeholder="Special Qualification" ng-model="special_qualification" ng-required="true"></textarea>
+                      <textarea id="special_qualification" class="form-control" name="special_qua" rows="3">{{$spe_qul != '' ? $spe_qul->special_qua : ''}}</textarea>
                     </div>
-                    <button class="btn btn-primary" type="submit" ng-disabled="sq.$invalid">Save</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
                   </form>
                 </div>
               </div>
@@ -171,35 +176,63 @@
               </div>
               <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordionExample">
                 <div class="card-body">
+                    <table class="table table-bordered small">
+                        <thead>
+                          <tr>
+                            <th scope="col">Exam Title</th>
+                            <th scope="col">Concentration/Major</th>
+                            <th scope="col">Institute</th>
+                            <th scope="col">Result</th>
+                            <th scope="col">Pas.Year</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($aca_quas as $aca_qua)
+                            <tr>
+                              <td>{{$aca_qua != '' ? $aca_qua->exam_title : ''}}</td>
+                              <td>{{$aca_qua != '' ? $aca_qua->major : ''}}</td>
+                              <td>{{$aca_qua != '' ? $aca_qua->institute : ''}}</td>
+                              <td>{{$aca_qua != '' ? $aca_qua->result : ''}}</td>
+                              <td>{{$aca_qua != '' ? $aca_qua->pas_year : ''}}</td>
+                              <td>{{$aca_qua != '' ? $aca_qua->duration : ''}}</td>
+                              <td><a class="text-danger" href="{{url('aca-del',$aca_qua->id)}}">X</a></td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                    </table>
+
                   <form method="POST" action="{{url('academic-qua')}}" name="aq" novalidate>
                     @csrf
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="exam_title">Exam Title</label>
-                      <input id="exam_title" class="form-control" type="text" name="exam_title"  ng-model="exam_title" ng-required="true">
+                      <input id="exam_title" class="form-control" type="text" name="exam_title">
                     </div>
                     <div class="form-group">
                       <label for="major">Concentration/Major</label>
-                      <input id="major" class="form-control" type="text" name="major" ng-model="major" ng-required="true">
+                      <input id="major" class="form-control" type="text" name="major">
                     </div>
                     <div class="form-group">
                       <label for="institute">Institute</label>
-                      <input id="institute" class="form-control" type="text" name="institute" ng-model="institute" ng-required="true">
+                      <input id="institute" class="form-control" type="text" name="institute">
                     </div>
                     <div class="row">
                       <div class="form-group col-md-4">
                           <label for="result">Result</label>
-                          <input id="result" class="form-control" type="text" name="result" ng-model="result" ng-required="true">
+                          <input id="result" class="form-control" type="text" name="result">
                         </div>
                         <div class="form-group col-md-4">
                           <label for="pas_year">Pas.Year</label>
-                          <input id="pas_year" class="form-control" type="text" name="pas_year" ng-model="pas_year" ng-required="true">
+                          <input id="pas_year" class="form-control" type="text" name="pas_year">
                         </div>
                         <div class="form-group col-md-4">
                           <label for="duration">Duration</label>
-                          <input id="duration" class="form-control" type="text" name="duration" ng-model="duration" ng-required="true">
+                          <input id="duration" class="form-control" type="text" name="duration">
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit" ng-disabled="aq.$invalid">Save</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
                   </form>
                 </div>
               </div>
@@ -219,39 +252,68 @@
               </div>
               <div id="collapsesix" class="collapse" aria-labelledby="headingsix" data-parent="#accordionExample">
                 <div class="card-body">
+                    <table class="table table-bordered small">
+                        <thead>
+                          <tr>
+                            <th scope="col">Training Title</th>
+                            <th scope="col">Topic</th>
+                            <th scope="col">Institute</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($tra_sums as $tra_sum)
+                            <tr>
+                              <td>{{$tra_sum != '' ? $tra_sum->title : ''}}</td>
+                              <td>{{$tra_sum != '' ? $tra_sum->topic : ''}}</td>
+                              <td>{{$tra_sum != '' ? $tra_sum->institute : ''}}</td>
+                              <td>{{$tra_sum != '' ? $tra_sum->country : ''}}</td>
+                              <td>{{$tra_sum != '' ? $tra_sum->location : ''}}</td>
+                              <td>{{$tra_sum != '' ? $tra_sum->year : ''}}</td>
+                              <td>{{$tra_sum != '' ? $tra_sum->duration : ''}}</td>
+                              <td><a class="text-danger" href="{{url('tra_del',$tra_sum)}}">X</a></td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                    </table>
                 <form method="POST" action="{{url('training-sum')}}" name="ts" novalidate>
                   @csrf
+                  <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="training_title">Training Title</label>
-                      <input id="training_title" class="form-control" type="text" name="title" ng-model="title" ng-required="true">
+                      <input id="training_title" class="form-control" type="text" name="title">
                     </div>
                     <div class="form-group">
                       <label for="topic">Topic</label>
-                      <input id="topic" class="form-control" type="text" name="topic" ng-model="topic" ng-required="true">
+                      <input id="topic" class="form-control" type="text" name="topic">
                     </div>
                     <div class="form-group">
                       <label for="institute">Institute</label>
-                      <input id="institute" class="form-control" type="text" name="institute" ng-model="institute" ng-required="true">
+                      <input id="institute" class="form-control" type="text" name="institute">
                     </div>
                     <div class="form-group">
                       <label for="location">Location</label>
-                      <input id="location" class="form-control" type="text" name="location" ng-model="location" ng-required="true">
+                      <input id="location" class="form-control" type="text" name="location">
                     </div>
                     <div class="row">
                       <div class="form-group col-md-4">
                           <label for="country">Country</label>
-                          <input id="country" class="form-control" type="text" name="country" ng-model="country" ng-required="true">
+                          <input id="country" class="form-control" type="text" name="country">
                         </div>
                         <div class="form-group col-md-4">
                           <label for="year">Year</label>
-                          <input id="year" class="form-control" type="text" name="year" ng-model="year" ng-required="true">
+                          <input id="year" class="form-control" type="text" name="year">
                         </div>
                         <div class="form-group col-md-4">
                           <label for="duration">Duration</label>
-                          <input id="duration" class="form-control" type="text" name="duration" ng-model="duration" ng-required="true">
+                          <input id="duration" class="form-control" type="text" name="duration">
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit" ng-disabled="ts.$invalid">Save</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
                   </form>
                 </div>
               </div>
@@ -273,17 +335,33 @@
                 <div class="card-body">
                   <form method="POST" action="{{url('specialization')}}" name="fs" novalidate>
                     @csrf
+                    <input type="hidden" name="id" value="{{$tra_sum != '' ? $tra_sum->id : ''}}">
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                    <table class="small">
+                      <tbody>
+                        @foreach ($specials as $special)
+                        <tr>
+                          <td>{{$special->specialization}}</td><td><a class="btn text-danger" href="{{url('del_spe',$special->id)}}">X</a></td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                    
                     <div class="form-group">
                       <label for="specialization">Fields of Specialization</label>
                       <input id="specialization" class="form-control" type="text" name="specialization" ng-model="specialization" ng-required="true">
                     </div>
                     <button class="btn btn-primary mb-5" type="submit" ng-disabled="fs.$invalid">Save</button>
                   </form>
+
+                  <!--Description-->
                   <form method="POST" action="{{url('description')}}" name="desc" novalidate>
                     @csrf
+                    <input type="hidden" name="id" value="{{$description != '' ? $description->id : ''}}">
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="description">Description</label>
-                      <textarea id="description" class="form-control" name="description" ng-model="description" ng-required="true" rows="3" placeholder="Description"></textarea>
+                      <textarea id="description" class="form-control" name="description">{{$description != '' ? $description->description : ''}}</textarea>
                     </div>
                     <button class="btn btn-primary" type="submit" ng-disabled="desc.$invalid">Save</button>
                   </form>
@@ -304,15 +382,38 @@
               </div>
               <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
                 <div class="card-body">
+                    <table class="table table-bordered small">
+                        <thead>
+                          <tr>
+                            <th scope="col">Language</th>
+                            <th scope="col">Reading</th>
+                            <th scope="col">Writing</th>
+                            <th scope="col">Speaking</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($languages as $language)
+                            <tr>
+                              <td>{{$language != '' ? $language->language : ''}}</td>
+                              <td>{{$language != '' ? $language->reading : ''}}</td>
+                              <td>{{$language != '' ? $language->writing : ''}}</td>
+                              <td>{{$language != '' ? $language->speaking : ''}}</td>
+                              <td><a class="text-danger" href="{{url('lang_del',$language->id)}}">X</a></td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
                   <form method="POST" action="{{url('language')}}" name="language_pro" novalidate>
                     @csrf
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="language">Language</label>
                       <input id="language" class="form-control" type="text" name="language" ng-model="language" ng-required="true">
                     </div>
                     <div class="form-group">
                       <label for="reading">Reading</label>
-                      <select id="inputState" class="form-control" name="reading" ng-model="reading" ng-required="true">
+                      <select id="inputState" class="form-control" name="reading">
                         <option value="">--Select--</option>
                           <option value="Low">Low</option>
                           <option value="Medium">Medium</option>
@@ -321,7 +422,7 @@
                     </div>
                     <div class="form-group">
                       <label for="writing">Writing</label>
-                      <select id="inputState" class="form-control" name="writing" ng-model="writing" ng-required="true">
+                      <select id="inputState" class="form-control" name="writing">
                         <option value="">--Select--</option>
                           <option value="Low">Low</option>
                           <option value="Medium">Medium</option>
@@ -330,14 +431,14 @@
                     </div>
                     <div class="form-group">
                       <label for="speaking">Speaking</label>
-                      <select id="inputState" class="form-control" name="speaking" ng-model="speaking" ng-required="true">
+                      <select id="inputState" class="form-control" name="speaking">
                           <option value="">--Select--</option>
                           <option value="Low">Low</option>
                           <option value="Medium">Medium</option>
                           <option value="High">High</option>
                         </select>
                     </div>
-                    <button class="btn btn-primary" type="submit" ng-disabled="language_pro.$invalid">Save</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
                   </form>
                 </div>
               </div>
@@ -359,35 +460,37 @@
                 <div class="card-body">
                   <form method="POST" action="{{url('reference')}}" name="reference" novalidate>
                     @csrf
+                    <input type="hidden" name="id" value="{{$reference != '' ? $reference->id : ''}}">
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="name">Name</label>
-                      <input id="name" class="form-control" type="text" name="name" placeholder="Name" ng-model="name" ng-required="true">
+                      <input id="name" class="form-control" type="text" name="name" value="{{$reference != '' ? $reference->name : ''}}">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="email" ng-required="true">
+                        <input type="email" class="form-control" id="email" name="email" value="{{$reference != '' ? $reference->email : ''}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="phone">Phone</label>
-                        <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone" ng-model="phone" ng-required="true">
+                        <input type="number" class="form-control" id="phone" name="phone" value="{{$reference != '' ? $reference->phone : ''}}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="address">Address</label>
-                      <input type="text" class="form-control" id="address" name="address" placeholder="Address" ng-model="address" ng-required="true">
+                      <input type="text" class="form-control" id="address" name="address" value="{{$reference != '' ? $reference->address : ''}}">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="organization">Organization</label>
-                        <input type="text" class="form-control" id="organization" name="organization" placeholder="Organization" ng-model="organization" ng-required="true">
+                        <input type="text" class="form-control" id="organization" name="organization" value="{{$reference != '' ? $reference->organization : ''}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="designation">Designation</label>
-                        <input type="text" class="form-control" id="designation" name="designation" placeholder="Designation" ng-model="designation" ng-required="true">
+                        <input type="text" class="form-control" id="designation" name="designation" value="{{$reference != '' ? $reference->designation : ''}}">
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" ng-disabled="reference.$invalid">Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                   </form>
                 </div>
               </div>

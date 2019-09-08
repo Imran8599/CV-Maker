@@ -28,8 +28,15 @@ Route::post('career-obj','CareerObjectiveController@index');
 Route::post('career-sum','CareerSummaryController@index');
 Route::post('special-qua','SpecialQualificationController@index');
 Route::post('academic-qua','AcademicQuaController@index');
+Route::get('aca-del/{id}','AcademicQuaController@delete');
+
 Route::post('training-sum','TrainingSumController@index');
+Route::get('tra_del/{id}','TrainingSumController@delete');
 Route::post('specialization','SpecializationController@index');
+Route::get('del_spe/{id}','SpecializationController@delete');
+
 Route::post('description','DescriptionController@index');
 Route::post('language','LanguageProController@index');
+Route::get('lang_del/{id}','LanguageProController@delete');
+
 Route::post('reference','ReferenceController@index');

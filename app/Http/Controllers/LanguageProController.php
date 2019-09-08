@@ -10,35 +10,27 @@ class LanguageProController extends Controller
 {
     function index(Request $request){
 
-        $user = LanguageProficiency::where('user_id', Auth::user()->id)->first();
-
-        if($user != ""){
-            $data = LanguageProficiency::find($request->id);
-            $data->id = $request->id;
-            $data->user_id = $request->user_id;
-            $data->language = $request->language;
-            $data->reading = $request->reading;
-            $data->writing = $request->writing;
-            $data->speaking = $request->speaking;
-            $result = $data->save();
-            if($result){
-                return redirect()->back()->with('success','Save successfuly.');
-            }else{
-                return redirect()->back()->with('danger','Something wrong!');
-            }
+        $data = new LanguageProficiency();
+        $data->user_id = $request->user_id;
+        $data->language = $request->language;
+        $data->reading = $request->reading;
+        $data->writing = $request->writing;
+        $data->speaking = $request->speaking;
+        $result = $data->save();
+        if($result){
+            return redirect()->back()->with('success','Save successfuly.');
         }else{
-            $data = new LanguageProficiency();
-            $data->user_id = $request->user_id;
-            $data->language = $request->language;
-            $data->reading = $request->reading;
-            $data->writing = $request->writing;
-            $data->speaking = $request->speaking;
-            $result = $data->save();
-            if($result){
-                return redirect()->back()->with('success','Save successfuly.');
-            }else{
-                return redirect()->back()->with('danger','Something wrong!');
-            }
+            return redirect()->back()->with('danger','Something wrong!');
+        }
+    }
+
+    function delete($id){
+        $row = LanguageProficiency::find($id);
+        $result = $row->delete();
+        if($result){
+            return redirect()->back()->with('success','Delete successfuly.');
+        }else{
+            return redirect()->back()->with('danger','Something wrong!');
         }
     }
 }
