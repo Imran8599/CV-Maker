@@ -19,6 +19,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('edit', 'HomeController@edit')->name('edit');
+Route::get('demo', 'HomeController@demo')->name('demo');
 
 Route::get('login/facebook', 'FacebookController@redirectToProvider');
 Route::get('login/facebook/callback', 'FacebookController@handleProviderCallback');

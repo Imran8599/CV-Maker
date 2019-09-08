@@ -74,6 +74,7 @@
                 <a class="list-group-item list-group-item-action {{Request::is('/')? 'active' : ""}}" href="{{ url('/') }}"><i class="fa fa-home pr-1" style="font-size:18px;"></i>Home</a>
                 <a class="list-group-item list-group-item-action {{Request::is('home*')? 'active' : ""}}" href="{{ url('/home') }}"><i class="fa fa-eye pr-1" style="font-size:18px;"></i>View Resume</a>
                 <a class="list-group-item list-group-item-action {{Request::is('edit*')? 'active' : ""}}" href="{{ url('edit')}}"><i class="fa fa-edit pr-1" style="font-size:18px;"></i>Edit Resume</a>
+                <a class="list-group-item list-group-item-action {{Request::is('demo*')? 'active' : ""}}" href="{{ url('demo')}}"><i class="fa fa-copy pr-1" style="font-size:18px;"></i>Demo</a>
                 <a class="list-group-item list-group-item-action {{Request::is('download*')? 'active' : ""}}" href="{{url('download')}}"><i class="fa fa-download pr-1" style="font-size:18px;"></i>Download PDF</a>
                 <a class="list-group-item list-group-item-action {{Request::is('print*')? 'active' : ""}}" href="{{url('print')}}"><i class="fa fa-print pr-1" style="font-size:18px;"></i>Print</a>
               </div>

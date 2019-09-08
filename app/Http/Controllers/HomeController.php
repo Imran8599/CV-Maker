@@ -32,12 +32,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
+    public function index(){
         return view('home');
     }
-    public function edit()
-    {
+
+    public function demo(){
+        return view('demo');
+    }
+
+    public function edit(){
         $per_det = PersonalDetails::where('user_id', Auth::user()->id)->first();
         $car_obj = CareerObj::where('user_id', Auth::user()->id)->first();
         $car_sum = CareerSum::where('user_id', Auth::user()->id)->first();
