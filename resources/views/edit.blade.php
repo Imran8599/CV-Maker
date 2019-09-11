@@ -141,7 +141,7 @@
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                       <label for="career_summary">Career Summary</label>
-                      <textarea id="career_summary" class="form-control" name="career_sum" rows="3" placeholder="Career Summary">{{$car_sum != '' ? $car_sum->career_sum : ''}}</textarea>
+                      <textarea id="career_summary" class="form-control" name="career_sum" rows="3">{{$car_sum != '' ? $car_sum->career_sum : ''}}</textarea>
                     </div>
                     <button class="btn btn-primary mb-5" type="submit">Save</button>
                   </form>
@@ -268,14 +268,14 @@
                         <tbody>
                           @foreach ($tra_sums as $tra_sum)
                             <tr>
-                              <td>{{$tra_sum != '' ? $tra_sum->title : ''}}</td>
-                              <td>{{$tra_sum != '' ? $tra_sum->topic : ''}}</td>
-                              <td>{{$tra_sum != '' ? $tra_sum->institute : ''}}</td>
-                              <td>{{$tra_sum != '' ? $tra_sum->country : ''}}</td>
-                              <td>{{$tra_sum != '' ? $tra_sum->location : ''}}</td>
-                              <td>{{$tra_sum != '' ? $tra_sum->year : ''}}</td>
-                              <td>{{$tra_sum != '' ? $tra_sum->duration : ''}}</td>
-                              <td><a class="text-danger" href="{{url('tra_del',$tra_sum)}}">X</a></td>
+                              <td>{{$tra_sums != '' ? $tra_sum->title : ''}}</td>
+                              <td>{{$tra_sums != '' ? $tra_sum->topic : ''}}</td>
+                              <td>{{$tra_sums != '' ? $tra_sum->institute : ''}}</td>
+                              <td>{{$tra_sums != '' ? $tra_sum->country : ''}}</td>
+                              <td>{{$tra_sums != '' ? $tra_sum->location : ''}}</td>
+                              <td>{{$tra_sums != '' ? $tra_sum->year : ''}}</td>
+                              <td>{{$tra_sums != '' ? $tra_sum->duration : ''}}</td>
+                              <td><a class="text-danger" href="{{url('tra_del',$tra_sum->id)}}">X</a></td>
                             </tr>
                           @endforeach
                         </tbody>
@@ -335,7 +335,6 @@
                 <div class="card-body">
                   <form method="POST" action="{{url('specialization')}}" name="fs" novalidate>
                     @csrf
-                    <input type="hidden" name="id" value="{{$tra_sum != '' ? $tra_sum->id : ''}}">
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <table class="small">
                       <tbody>
@@ -382,28 +381,32 @@
               </div>
               <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
                 <div class="card-body">
+
+                  @if ($languages != "")
                     <table class="table table-bordered small">
-                        <thead>
+                      <thead>
+                        <tr>
+                          <th scope="col">Language</th>
+                          <th scope="col">Reading</th>
+                          <th scope="col">Writing</th>
+                          <th scope="col">Speaking</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($languages as $language)
                           <tr>
-                            <th scope="col">Language</th>
-                            <th scope="col">Reading</th>
-                            <th scope="col">Writing</th>
-                            <th scope="col">Speaking</th>
-                            <th scope="col">Action</th>
+                            <td>{{$language != '' ? $language->language : ''}}</td>
+                            <td>{{$language != '' ? $language->reading : ''}}</td>
+                            <td>{{$language != '' ? $language->writing : ''}}</td>
+                            <td>{{$language != '' ? $language->speaking : ''}}</td>
+                            <td><a class="text-danger" href="{{url('lang_del',$language->id)}}">X</a></td>
                           </tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($languages as $language)
-                            <tr>
-                              <td>{{$language != '' ? $language->language : ''}}</td>
-                              <td>{{$language != '' ? $language->reading : ''}}</td>
-                              <td>{{$language != '' ? $language->writing : ''}}</td>
-                              <td>{{$language != '' ? $language->speaking : ''}}</td>
-                              <td><a class="text-danger" href="{{url('lang_del',$language->id)}}">X</a></td>
-                            </tr>
-                          @endforeach
-                        </tbody>
-                      </table>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  @endif
+
                   <form method="POST" action="{{url('language')}}" name="language_pro" novalidate>
                     @csrf
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">

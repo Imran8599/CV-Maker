@@ -5,12 +5,13 @@
     <div class="card">
         <div class="card-header bg-primary text-light"><i class="fa fa-eye pr-2" style="font-size:25px;"></i>View Resume</div>
         <div class="card-body">
+          @if ($per_det != "")
             <div class="row">
               <div class="col-6">
-                <h3>Imran ahamed</h3>
-                <tr><td>Address</td><td>: Nilphamari</td></tr><br>
-                <tr><td>Phone No</td><td>: 01706764112</td></tr><br>
-                <tr><td>Email</td><td>: imranahamed851999@gmail.com</td></tr>
+                <h3>{{$per_det->name}}</h3>
+                <tr><td><strong>Address</strong>: {{$per_det->c_address}}</td></tr><br>
+                <tr><td><strong>Phone</strong>: {{$per_det->phone}}</td></tr><br>
+                <tr><td><strong>Email</strong>: {{$per_det->email}}</td></tr>
               </div>
               <div class="col-3 offset-3">
                 <img style="width:75%; height:140px;" src="{{asset('public/img/imran.png')}}" alt="Imran">
@@ -18,14 +19,24 @@
             </div>
                 
             <hr>
+          @endif
 
+          @if ($car_obj != "")
             <h5 class="bg-secondary py-2 pl-1 text-light">Career Objective:</h5>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolor cumque magnam suscipit velit consectetur earum ipsa architecto assumenda obcaecati ex quis possimus doloribus odit laudantium, dolore ratione quos itaque!</p>
-            <h5 class="bg-secondary py-2 pl-1 text-light">Career Summary:</h5>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolor cumque magnam suscipit velit consectetur earum ipsa architecto assumenda obcaecati ex quis possimus doloribus odit laudantium, dolore ratione quos itaque!</p>
-            <h5 class="bg-secondary py-2 pl-1 text-light">Special Qualification:</h5>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolor cumque magnam suscipit velit consectetur earum ipsa architecto assumenda obcaecati ex quis possimus doloribus odit laudantium, dolore ratione quos itaque!</p>
+            <p>{{$car_obj->career_obj}}</p>
+          @endif
 
+          @if ($car_sum != "")
+            <h5 class="bg-secondary py-2 pl-1 text-light">Career Summary:</h5>
+            <p>{{$car_sum->career_sum}}</p>
+          @endif
+
+          @if ($spe_qul != "")
+            <h5 class="bg-secondary py-2 pl-1 text-light">Special Qualification:</h5>
+            <p>{{$spe_qul->special_qua}}</p>
+          @endif
+
+          @if ($aca_quas != "")
             <h5 class="bg-secondary py-2 pl-1 text-light">Academic Qualification:</h5>
             <table class="table table-bordered small">
               <thead>
@@ -39,17 +50,21 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Diploma in Engineering</td>
-                  <td>Computer Engineering</td>
-                  <td>Thakurgaon polytechnic institute.</td>
-                  <td>Appeared</td>
-                  <td>2019</td>
-                  <td>4 years</td>
-                </tr>
+                @foreach ($aca_quas as $aca_qua)
+                  <tr>
+                    <td>{{$aca_qua != '' ? $aca_qua->exam_title : ''}}</td>
+                    <td>{{$aca_qua != '' ? $aca_qua->major : ''}}</td>
+                    <td>{{$aca_qua != '' ? $aca_qua->institute : ''}}</td>
+                    <td>{{$aca_qua != '' ? $aca_qua->result : ''}}</td>
+                    <td>{{$aca_qua != '' ? $aca_qua->pas_year : ''}}</td>
+                    <td>{{$aca_qua != '' ? $aca_qua->duration : ''}}</td>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
-
+          @endif  
+            
+          @if ($tra_sums != '')
             <h5 class="bg-secondary py-2 pl-1 text-light">Training Summary:</h5>
             <table class="table table-bordered small">
               <thead>
@@ -64,18 +79,22 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($tra_sums as $tra_sum)
                 <tr>
-                  <td>PHP Framework Laravel</td>
-                  <td>Web</td>
-                  <td>CSLiT</td>
-                  <td>Bangladesh</td>
-                  <td>Green Road, Panthapath Signal, Dhaka-1205</td>
-                  <td>2019</td>
-                  <td>3 month </td>
+                  <td>{{$tra_sum != '' ? $tra_sum->title : ''}}</td>
+                  <td>{{$tra_sum != '' ? $tra_sum->topic : ''}}</td>
+                  <td>{{$tra_sum != '' ? $tra_sum->institute : ''}}</td>
+                  <td>{{$tra_sum != '' ? $tra_sum->country : ''}}</td>
+                  <td>{{$tra_sum != '' ? $tra_sum->location : ''}}</td>
+                  <td>{{$tra_sum != '' ? $tra_sum->year : ''}}</td>
+                  <td>{{$tra_sum != '' ? $tra_sum->duration : ''}}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
-
+          @endif
+            
+          @if ($specials != '')
             <h5 class="bg-secondary py-2 pl-1 text-light mt-2">Specialization:</h5>
             <table class="table table-bordered small">
               <thead>
@@ -86,12 +105,18 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="col-4"><i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>PHP(OOP) <br> <i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>Laravel Framework <br> <i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>Bootstrap <br> <i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>HTML & CSS <br> <i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>JavaScript <br> <i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>MySQL <br> <i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>AngularJS <br> <i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>REST API <br> <i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>Ajax</td>
-                  <td class="col-8">For the last 3 years, I have been working on the mentioned topics. Works on different projects have a good idea on these issues. Now we can do any project work with the mentioned topics.</td>
+                  <td class="col-4">
+                    @foreach ($specials as $special)<i class="fa fa fa-hand-o-right pr-1" style="font-size:18px;"></i>{{$specials != "" ? $special->specialization : ""}} <br>
+                    @endforeach
+                  </td>
+                  <td class="col-8">{{$description != "" ? $description->description : ""}}</td>
                 </tr>
               </tbody>
             </table>
+          @endif
 
+
+          @if ($languages != "")
             <h5 class="bg-secondary py-2 pl-1 text-light">Language Proficiency:</h5>
             <table class="table table-bordered small">
               <thead>
@@ -103,43 +128,44 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($languages as $language)
                 <tr>
-                  <td>Bangla</td>
-                  <td>High</td>
-                  <td>High</td>
-                  <td>High</td>
+                  <td>{{$languages != '' ? $language->language : ""}}</td>
+                  <td>{{$languages != '' ? $language->reading : ""}}</td>
+                  <td>{{$languages != '' ? $language->writing : ""}}</td>
+                  <td>{{$languages != '' ? $language->speaking : ""}}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
+          @endif
 
+          @if ($per_det != "")
             <h5 class="bg-secondary py-2 pl-1 text-light">Personal Details :</h5>
             <table class="small">
-              <tr><td>Father's Name</td><td>:	Abdul Latif</td></tr>
-              <tr><td>Mother's Name</td><td>:	Badrun Nahar Laky</td></tr>
-              <tr><td>Date of Birth</td><td>:	May 8, 1999</td></tr>
-              <tr><td>Gender</td><td>: Male</td></tr>
-              <tr><td>Marital Status</td><td>: Unmarried</td></tr>
-              <tr><td>Nationality</td><td>:	Bangladeshi</td></tr>
-              <tr><td>Religion</td><td>: Islam</td></tr>
-              <tr><td>Permanent Address</td><td>:	Boruya-gangber, Jadur-hat, 14-No Chapra union, Nilphamari Sadar, Nilphamari Sadar, Nilphamari 5300</td></tr>
-              <tr><td>Current Location</td><td>: Dhaka</td></tr>
+              <tr><th>Father's Name</th><td>:	{{$per_det != "" ? $per_det->f_name : ""}}</td></tr>
+              <tr><th>Mother's Name</th><td>:	{{$per_det != "" ? $per_det->m_name : ""}}</td></tr>
+              <tr><th>Date of Birth</th><td>:	{{$per_det != "" ? $per_det->date_of : ""}}</td></tr>
+              <tr><th>Gender</th><td>: {{$per_det != "" ? $per_det->gender : ""}}</td></tr>
+              <tr><th>Marital Status</th><td>: {{$per_det != "" ? $per_det->marital_status : ""}}</td></tr>
+              <tr><th>Nationality</th><td>:	{{$per_det != "" ? $per_det->nationality : ""}}</td></tr>
+              <tr><th>Religion</th><td>: {{$per_det != "" ? $per_det->religion : ""}}</td></tr>
+              <tr><th>Permanent Address</th><td>:	{{$per_det != "" ? $per_det->p_address : ""}}</td></tr>
             </table>
-
+          @endif
+            
+          @if ($reference != "")
             <h5 class="bg-secondary py-2 pl-1 text-light mt-2">Reference :</h5>
-            <div class="col-12">
-              <div class="row">
-                <div class="col-6">
-                  <table class="small">
-                    <tr><td>Bablu Mazumber</td></tr>
-                    <tr><td>Software Developer. </td></tr>
-                    <tr><td>Spondonit </td></tr>
-                    <tr><td>56/8 Panthapath, Dhanmondi (Near Square Hospital) Dhaka 1215 </td></tr>
-                    <tr><td>+8801811843300 </td></tr>
-                    <tr><td>bablupub@gmail.com  </td></tr>
-                  </table>
-                </div>
-              </div>
-            </div>
+            <table class="small">
+              <tr><th>Name</th><td>: {{$reference != "" ? $reference->name : ""}}</td></tr>
+              <tr><th>Designation</th><td>: {{$reference != "" ? $reference->designation : ""}}</td></tr>
+              <tr><th>Organization</th><td>: {{$reference != "" ? $reference->organization : ""}}</td></tr>
+              <tr><th>Email</th><td>: {{$reference != "" ? $reference->email : ""}}</td></tr>
+              <tr><th>Phone</th><td>: {{$reference != "" ? $reference->phone : ""}}</td></tr>
+              <tr><th>Address</th><td>: {{$reference != "" ? $reference->address : ""}}</td></tr>
+            </table>
+          @endif
+            
         </div>
     </div>
   </div>

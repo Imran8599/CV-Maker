@@ -8,9 +8,9 @@
             <div class="row">
               <div class="col-6">
                 <h3>Imran ahamed</h3>
-                <tr><td>Address</td><td>: Nilphamari</td></tr><br>
-                <tr><td>Phone No</td><td>: 01706764112</td></tr><br>
-                <tr><td>Email</td><td>: imranahamed851999@gmail.com</td></tr>
+                <tr><td><strong>Address</strong>: Nilphamari</td></tr><br>
+                <tr><td><strong>Phone</strong>: 01706764112</td></tr><br>
+                <tr><td><strong>Email</strong>: imranahamed851999@gmail.com</td></tr>
               </div>
               <div class="col-3 offset-3">
                 <img style="width:75%; height:140px;" src="{{asset('public/img/imran.png')}}" alt="Imran">
@@ -114,32 +114,26 @@
 
             <h5 class="bg-secondary py-2 pl-1 text-light">Personal Details :</h5>
             <table class="small">
-              <tr><td>Father's Name</td><td>:	Abdul Latif</td></tr>
-              <tr><td>Mother's Name</td><td>:	Badrun Nahar Laky</td></tr>
-              <tr><td>Date of Birth</td><td>:	May 8, 1999</td></tr>
-              <tr><td>Gender</td><td>: Male</td></tr>
-              <tr><td>Marital Status</td><td>: Unmarried</td></tr>
-              <tr><td>Nationality</td><td>:	Bangladeshi</td></tr>
-              <tr><td>Religion</td><td>: Islam</td></tr>
-              <tr><td>Permanent Address</td><td>:	Boruya-gangber, Jadur-hat, 14-No Chapra union, Nilphamari Sadar, Nilphamari Sadar, Nilphamari 5300</td></tr>
-              <tr><td>Current Location</td><td>: Dhaka</td></tr>
+              <tr><th>Father's Name</th><td>:	Abdul Latif</td></tr>
+              <tr><th>Mother's Name</th><td>:	Badrun Nahar Laky</td></tr>
+              <tr><th>Date of Birth</th><td>:	May 8, 1999</td></tr>
+              <tr><th>Gender</th><td>: Male</td></tr>
+              <tr><th>Marital Status</th><td>: Unmarried</td></tr>
+              <tr><th>Nationality</th><td>:	Bangladeshi</td></tr>
+              <tr><th>Religion</th><td>: Islam</td></tr>
+              <tr><th>Permanent Address</th><td>:	Boruya-gangber, Jadur-hat, 14-No Chapra union, Nilphamari Sadar, Nilphamari Sadar, Nilphamari 5300</td></tr>
+              <tr><th>Current Location</th><td>: Dhaka</td></tr>
             </table>
 
             <h5 class="bg-secondary py-2 pl-1 text-light mt-2">Reference :</h5>
-            <div class="col-12">
-              <div class="row">
-                <div class="col-6">
-                  <table class="small">
-                    <tr><td>Bablu Mazumber</td></tr>
-                    <tr><td>Software Developer. </td></tr>
-                    <tr><td>Spondonit </td></tr>
-                    <tr><td>56/8 Panthapath, Dhanmondi (Near Square Hospital) Dhaka 1215 </td></tr>
-                    <tr><td>+8801811843300 </td></tr>
-                    <tr><td>bablupub@gmail.com  </td></tr>
-                  </table>
-                </div>
-              </div>
-            </div>
+            <table class="small">
+              <tr><th>Name</th><td>: Bablu Mazumber</td></tr>
+              <tr><th>Designation</th><td>: Software Developer. </td></tr>
+              <tr><th>Organization</th><td>: Spondonit </td></tr>
+              <tr><th>Address</th><td>: 56/8 Panthapath, Dhanmondi (Near Square Hospital) Dhaka 1215 </td></tr>
+              <tr><th>Phone</th><td>: +8801811843300 </td></tr>
+              <tr><th>Email</th><td>: bablupub@gmail.com  </td></tr>
+            </table>
         </div>
     </div>
   </div>
